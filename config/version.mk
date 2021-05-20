@@ -31,3 +31,10 @@ else
 HAVOC_BUILD_VARIANT = Vanilla
 HAVOC_BUILD_VERSION := Havoc-OS-v$(HAVOC_VERSION)-$(shell date -u +%Y%m%d)-$(HAVOC_BUILD)-$(HAVOC_BUILD_TYPE)
 endif
+
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.build.project=havoc-os \
+  ro.havoc.version=$(HAVOC_VERSION) \
+  ro.havoc.buildtypevariant=$(HAVOC_BUILD_VARIANT)  \
+  ro.havoc.maintainer=$(HAVOC_DEVICE_MAINTAINER) \
+  ro.maintainer.name=$(HAVOC_MAINTAINER)
