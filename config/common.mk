@@ -39,6 +39,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.surface_flinger.supports_background_blur=1 \
     persist.sys.sf.disable_blurs=1
 
+# Clean cache
+PRODUCT_COPY_FILES += \
+    vendor/havoc/prebuilt/common/bin/clean_cache.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/clean_cache.sh
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/havoc/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -55,6 +59,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.ota.allow_downgrade=true
 endif
 endif
+
+# Mount system
+PRODUCT_COPY_FILES += \
+    vendor/havoc/prebuilt/common/bin/system-mount.sh:install/bin/system-mount.sh
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \

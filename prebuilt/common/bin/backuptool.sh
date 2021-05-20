@@ -23,19 +23,21 @@ get_script_version() {
 
 # Preserve /system/addon.d in /tmp/addon.d
 preserve_addon_d() {
+  echo "Backing up addons"
   if [ -d $S/addon.d/ ]; then
-    mkdir -p /tmp/addon.d/
-    cp -a $S/addon.d/* /tmp/addon.d/
+    mkdir -v -p /tmp/addon.d/
+    cp -v -a $S/addon.d/* /tmp/addon.d/
     chmod 755 /tmp/addon.d/*.sh
   fi
 }
 
 # Restore /system/addon.d from /tmp/addon.d
 restore_addon_d() {
+   echo "restoring  addons"
   if [ -d /tmp/addon.d/ ]; then
-    mkdir -p $S/addon.d/
-    cp -a /tmp/addon.d/* $S/addon.d/
-    rm -rf /tmp/addon.d/
+    mkdir -v -p $S/addon.d/
+    cp -v -a /tmp/addon.d/* $S/addon.d/
+    ls  /tmp/addon.d/
   fi
 }
 
@@ -84,7 +86,8 @@ determine_system_mount() {
   elif [ -d /system_root ]; then
     SYSMOUNT="/system_root"
   else
-    SYSMOUNT="/system"
+    mkdir -v -p "/system_root"
+    SYSMOUNT="/system_root"
   fi
 
   export S=$SYSMOUNT/system
